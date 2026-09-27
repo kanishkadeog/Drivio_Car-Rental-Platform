@@ -1,0 +1,309 @@
+// car-rental/platform/src/pages/Compare/Compare.scss
+
+
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+
+.compare-page {
+  min-height: 100vh;
+
+  padding: 150px 0 120px;
+
+  background: $color-bg;
+
+  &__header {
+    max-width: 700px;
+
+    margin-bottom: 65px;
+
+    > a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      margin-bottom: 35px;
+
+      color: $color-text-secondary;
+
+      font-size: 11px;
+
+      &:hover {
+        color: $color-accent;
+      }
+    }
+
+    > span {
+      display: block;
+
+      margin-bottom: 15px;
+
+      color: $color-accent;
+
+      font-family: $font-heading;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+    }
+
+    h1 {
+      margin: 0;
+
+      color: $color-text;
+
+      font-family: $font-heading;
+      font-size: clamp(45px, 6vw, 75px);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+
+    p {
+      max-width: 500px;
+
+      margin: 22px 0 0;
+
+      color: $color-text-secondary;
+
+      font-size: 14px;
+      line-height: 1.7;
+    }
+  }
+
+  &__empty {
+    padding: 80px 30px;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    background: $color-surface;
+
+    text-align: center;
+
+    > span {
+      color: $color-accent;
+
+      font-family: $font-heading;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+
+    h2 {
+      margin: 16px 0 12px;
+
+      color: $color-text;
+
+      font-family: $font-heading;
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    p {
+      max-width: 450px;
+
+      margin: 0 auto 28px;
+
+      color: $color-text-secondary;
+
+      font-size: 13px;
+      line-height: 1.7;
+    }
+  }
+
+  &__clear {
+    display: block;
+
+    margin: 30px auto 0;
+
+    border: 0;
+    background: transparent;
+
+    color: $color-text-muted;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+.compare-table {
+  overflow: hidden;
+
+  border: 1px solid $color-border;
+  border-radius: $radius-xl;
+
+  background: $color-surface;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 180px repeat(
+      auto-fit,
+      minmax(180px, 1fr)
+    );
+
+    min-height: 70px;
+
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    > * {
+      padding: 22px;
+
+      border-right: 1px solid $color-border;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    &--cars {
+      align-items: stretch;
+    }
+
+    &--action {
+      min-height: 75px;
+
+      > div {
+        padding: 0;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: $color-accent;
+
+        font-family: $font-heading;
+        font-size: 11px;
+        font-weight: 600;
+
+        &:hover {
+          background: rgba(199, 255, 61, 0.05);
+        }
+      }
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+
+    color: $color-text-muted;
+
+    font-family: $font-heading;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}
+
+.compare-car {
+  img {
+    width: 100%;
+    height: 170px;
+
+    margin-bottom: 18px;
+
+    border-radius: $radius-md;
+
+    object-fit: cover;
+  }
+
+  > span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: $color-accent;
+
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  h2 {
+    margin: 0 0 14px;
+
+    color: $color-text;
+
+    font-family: $font-heading;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  > strong {
+    color: $color-text;
+
+    font-family: $font-heading;
+    font-size: 19px;
+
+    small {
+      margin-left: 3px;
+
+      color: $color-text-muted;
+
+      font-family: $font-body;
+      font-size: 9px;
+      font-weight: 400;
+    }
+  }
+}
+
+.compare-value {
+  display: flex;
+  align-items: center;
+
+  color: $color-text-secondary;
+
+  font-size: 12px;
+}
+
+.compare-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: $color-text-secondary;
+
+    font-size: 11px;
+
+    svg {
+      flex-shrink: 0;
+      color: $color-accent;
+    }
+  }
+}
+
+@include mobile {
+  .compare-page {
+    padding: 120px 0 90px;
+
+    &__header {
+      margin-bottom: 40px;
+    }
+  }
+
+  .compare-table {
+    overflow-x: auto;
+
+    &__row {
+      min-width: 720px;
+      grid-template-columns: 120px repeat(3, 200px);
+    }
+  }
+}

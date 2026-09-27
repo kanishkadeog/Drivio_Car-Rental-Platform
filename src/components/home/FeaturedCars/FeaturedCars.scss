@@ -1,0 +1,92 @@
+// car-rental-platform/src/components/home/FeaturedCars/FeaturedCars.scss
+
+@use "../../../styles/variables" as *;
+
+.featured-cars {
+  padding: 120px 0;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    margin-bottom: 52px;
+  }
+
+  &__all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $color-border;
+    color: $color-text-secondary;
+    font-size: 13px;
+    transition:
+      color 0.25s ease,
+      border-color 0.25s ease;
+
+    &:hover {
+      color: $color-accent;
+      border-color: $color-accent;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid $color-border;
+
+    p {
+      max-width: 480px;
+      color: $color-text-muted;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .featured-cars {
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-cars {
+    padding: 90px 0;
+
+    &__top {
+      align-items: flex-start;
+      flex-direction: column;
+      margin-bottom: 38px;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-cars {
+    padding: 72px 0;
+  }
+}

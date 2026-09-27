@@ -1,0 +1,78 @@
+// car-rental-platform/src/components/cars/CarSpecifications/CarSpecifications.scss
+
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+
+.car-specifications {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  border-top: 1px solid $color-border;
+  border-left: 1px solid $color-border;
+}
+
+.car-specification {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  min-height: 92px;
+  padding: 18px;
+
+  border-right: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border: 1px solid $color-border;
+    border-radius: 50%;
+
+    color: $color-accent;
+  }
+
+  span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: $color-text-muted;
+
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  strong {
+    display: block;
+
+    color: $color-text;
+
+    font-family: $font-heading;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+@include mobile {
+  .car-specifications {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .car-specification {
+    min-height: 82px;
+    padding: 13px;
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

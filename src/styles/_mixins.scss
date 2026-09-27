@@ -1,0 +1,64 @@
+// car-rental-platform/src/styles/_mixins.scss
+
+@use "./variables" as *;
+
+@mixin container {
+  width: min(
+    $container-width,
+    calc(100% - 48px)
+  );
+
+  margin-inline: auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin glass {
+  background: rgba(17, 20, 24, 0.72);
+  border: 1px solid $color-border;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@mixin hover-lift {
+  transition:
+    transform $transition-normal,
+    box-shadow $transition-normal;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+  }
+}
+
+@mixin section-spacing {
+  padding-block: $space-3xl;
+}
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: $breakpoint-laptop) {
+    @content;
+  }
+}

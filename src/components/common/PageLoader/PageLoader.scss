@@ -1,0 +1,74 @@
+// car-rental-platform/src/components/common/PageLoader/PageLoader.css
+
+@use "../../../styles/variables" as *;
+
+.page-loader {
+  position: fixed;
+  z-index: 9999;
+
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  align-content: center;
+
+  background: $color-bg;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: $color-text;
+
+    font-family: $font-heading;
+    font-size: 20px;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    span {
+      display: grid;
+      place-items: center;
+
+      width: 38px;
+      height: 38px;
+
+      background: $color-accent;
+      color: $color-bg;
+
+      border-radius: 50%;
+    }
+  }
+
+  &__line {
+    width: min(260px, 60vw);
+    height: 1px;
+
+    margin-top: 25px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    div {
+      width: 100%;
+      height: 100%;
+
+      background: $color-accent;
+
+      transform-origin: left;
+    }
+  }
+
+  p {
+    margin-top: 14px;
+
+    color: $color-text-muted;
+
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}

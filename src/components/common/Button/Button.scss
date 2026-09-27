@@ -1,0 +1,128 @@
+// car-rental-platform/src/components/common/Button/Button.scss
+
+@use "../../../styles/variables" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 48px;
+  padding: 0 20px;
+
+  border: 1px solid transparent;
+  border-radius: $radius-sm;
+
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: 600;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    background $transition-normal,
+    color $transition-normal,
+    border-color $transition-normal,
+    transform $transition-normal,
+    box-shadow $transition-normal;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    transition: transform $transition-normal;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+
+    .button__icon {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &--primary {
+    background: $color-accent;
+    color: $color-bg;
+
+    box-shadow: 0 8px 25px rgba(199, 255, 61, 0.12);
+
+    .button__icon {
+      background: rgba(8, 10, 12, 0.12);
+    }
+
+    &:hover {
+      background: $color-accent-dark;
+      box-shadow: 0 12px 35px rgba(199, 255, 61, 0.18);
+    }
+  }
+
+  &--secondary {
+    background: $color-surface-light;
+    color: $color-text;
+    border-color: $color-border;
+
+    .button__icon {
+      background: $color-surface;
+    }
+
+    &:hover {
+      background: $color-surface;
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $color-text;
+    border-color: rgba(255, 255, 255, 0.2);
+
+    .button__icon {
+      background: $color-surface-light;
+    }
+
+    &:hover {
+      background: $color-text;
+      color: $color-bg;
+      border-color: $color-text;
+    }
+  }
+
+  &--ghost {
+    min-height: 42px;
+    padding: 0 12px;
+
+    background: transparent;
+    color: $color-text-secondary;
+
+    .button__icon {
+      background: transparent;
+    }
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+.button--full {
+  width: 100%;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .button {
+    min-height: 46px;
+    padding: 0 16px;
+  }
+}

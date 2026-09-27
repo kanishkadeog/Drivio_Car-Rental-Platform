@@ -1,0 +1,393 @@
+// car-rental-platform/src/components/cars/FilterPanel/FilterPanel.scss
+
+
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+
+.filter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  backdrop-filter: blur(5px);
+}
+
+.filter-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 101;
+
+  display: flex;
+  flex-direction: column;
+
+  width: min(430px, 100vw);
+  height: 100vh;
+
+  background: $color-surface;
+  border-left: 1px solid $color-border;
+
+  transform: translateX(100%);
+  transition: transform 0.4s
+    cubic-bezier(0.22, 1, 0.36, 1);
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding: 34px 30px 28px;
+
+    border-bottom: 1px solid $color-border;
+
+    span {
+      display: block;
+      margin-bottom: 8px;
+
+      color: $color-accent;
+
+      font-family: $font-heading;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+    }
+
+    h2 {
+      margin: 0;
+
+      color: $color-text;
+
+      font-family: $font-heading;
+      font-size: 27px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+    }
+
+    > button {
+      display: grid;
+      place-items: center;
+
+      width: 40px;
+      height: 40px;
+
+      border: 1px solid $color-border;
+      border-radius: 50%;
+
+      background: transparent;
+      color: $color-text;
+
+      cursor: pointer;
+
+      transition:
+        background $transition-fast,
+        border-color $transition-fast;
+
+      &:hover {
+        background: $color-surface-light;
+        border-color: rgba(199, 255, 61, 0.3);
+      }
+    }
+  }
+
+  &__body {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 10px 30px 30px;
+
+    scrollbar-width: thin;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 18px 30px;
+
+    border-top: 1px solid $color-border;
+    background: $color-surface;
+  }
+}
+
+.filter-group {
+  padding: 25px 0;
+
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+    > span {
+      color: $color-accent;
+
+      font-family: $font-heading;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    h3 {
+      margin: 0;
+
+      color: $color-text;
+
+      font-family: $font-heading;
+      font-size: 13px;
+      font-weight: 600;
+    }
+  }
+}
+
+.price-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    span {
+      color: $color-text-muted;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+    }
+
+    input {
+      width: 100%;
+      min-height: 44px;
+
+      padding: 0 12px;
+
+      border: 1px solid $color-border;
+      border-radius: $radius-sm;
+
+      background: $color-bg;
+      color: $color-text;
+
+      outline: none;
+
+      &:focus {
+        border-color: rgba(199, 255, 61, 0.4);
+      }
+
+      &::placeholder {
+        color: $color-text-muted;
+      }
+    }
+  }
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 40px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: $color-text-secondary;
+
+    font-size: 13px;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+      color $transition-fast,
+      padding $transition-fast;
+
+    &:hover,
+    &.is-active {
+      padding-left: 5px;
+      color: $color-accent;
+    }
+  }
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  button {
+    min-height: 36px;
+
+    padding: 0 14px;
+
+    border: 1px solid $color-border;
+    border-radius: 999px;
+
+    background: transparent;
+    color: $color-text-secondary;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition:
+      color $transition-fast,
+      background $transition-fast,
+      border-color $transition-fast;
+
+    &:hover,
+    &.is-active {
+      border-color: $color-accent;
+      background: rgba(199, 255, 61, 0.08);
+      color: $color-accent;
+    }
+  }
+}
+
+.availability-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > div {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    > span {
+      color: $color-accent;
+
+      font-family: $font-heading;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    h3 {
+      margin: 0 0 5px;
+
+      color: $color-text;
+
+      font-family: $font-heading;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+
+      color: $color-text-muted;
+      font-size: 10px;
+    }
+  }
+
+  > button {
+    position: relative;
+
+    width: 46px;
+    height: 26px;
+
+    padding: 3px;
+
+    border: 0;
+    border-radius: 20px;
+
+    background: $color-surface-light;
+
+    cursor: pointer;
+
+    span {
+      display: block;
+
+      width: 20px;
+      height: 20px;
+
+      border-radius: 50%;
+
+      background: $color-text-muted;
+
+      transition:
+        transform $transition-fast,
+        background $transition-fast;
+    }
+
+    &.is-active {
+      background: rgba(199, 255, 61, 0.2);
+
+      span {
+        transform: translateX(20px);
+        background: $color-accent;
+      }
+    }
+  }
+}
+
+.filter-reset,
+.filter-apply {
+  min-height: 46px;
+
+  border-radius: $radius-sm;
+
+  font-family: $font-heading;
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.filter-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  flex: 1;
+
+  border: 1px solid $color-border;
+
+  background: transparent;
+  color: $color-text-secondary;
+
+  &:hover {
+    color: $color-text;
+    background: $color-surface-light;
+  }
+}
+
+.filter-apply {
+  flex: 1.4;
+
+  border: 0;
+
+  background: $color-accent;
+  color: #080a0c;
+
+  &:hover {
+    background: $color-accent-dark;
+  }
+}
+
+@include mobile {
+  .filter-panel {
+    width: 100%;
+  }
+}

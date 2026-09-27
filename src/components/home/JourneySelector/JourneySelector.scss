@@ -1,0 +1,609 @@
+// car-rental-platform/src/components/home/JourneySelector/JourneySelector.scss
+
+
+@use "../../../styles/variables" as *;
+
+.journey-section {
+  position: relative;
+  padding: 120px 0;
+  background: $color-bg;
+  overflow: hidden;
+}
+
+.journey-header {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 50px;
+  margin-bottom: 56px;
+}
+
+.journey-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: $color-text-muted;
+
+  span {
+    width: 24px;
+    height: 1px;
+    background: $color-accent;
+  }
+}
+
+.journey-heading-wrap {
+  max-width: 760px;
+
+  h2 {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2.7rem, 5vw, 5.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+    font-weight: 500;
+    color: $color-text;
+
+    span {
+      color: $color-text-muted;
+    }
+  }
+
+  p {
+    max-width: 520px;
+    margin: 28px 0 0;
+    color: $color-text-secondary;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+.journey-selector {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: $color-surface;
+}
+
+.journey-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.journey-tab {
+  position: relative;
+  min-height: 92px;
+  padding: 18px 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  background: transparent;
+  color: $color-text-muted;
+
+  cursor: pointer;
+  text-align: left;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  &:hover {
+    color: $color-text;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  &.active {
+    color: $color-text;
+    background: rgba(255, 255, 255, 0.035);
+  }
+}
+
+.journey-tab-number {
+  align-self: flex-start;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.65rem;
+  color: $color-text-muted;
+}
+
+.journey-tab-icon {
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.journey-tab.active {
+  .journey-tab-icon {
+    border-color: rgba(199, 255, 61, 0.35);
+    background: rgba(199, 255, 61, 0.08);
+    color: $color-accent;
+  }
+}
+
+.journey-tab-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.journey-tab-line {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 0;
+  height: 2px;
+  background: $color-accent;
+}
+
+.journey-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  min-height: 560px;
+}
+
+.journey-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  min-width: 0;
+}
+
+.journey-image {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.journey-image-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.05) 30%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+}
+
+.journey-image-label {
+  position: absolute;
+  left: 28px;
+  bottom: 25px;
+
+  display: flex;
+  gap: 10px;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.72);
+
+  span:last-child {
+    color: $color-accent;
+  }
+}
+
+.journey-copy {
+  padding: 48px 42px;
+  display: flex;
+  flex-direction: column;
+  background: $color-surface-light;
+}
+
+.journey-copy-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.journey-number {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.72rem;
+  color: $color-text-muted;
+  letter-spacing: 0.08em;
+}
+
+.journey-copy-icon {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(199, 255, 61, 0.22);
+  border-radius: 50%;
+  color: $color-accent;
+}
+
+.journey-copy h3 {
+  margin: auto 0 18px;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 3vw, 3.1rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+  color: $color-text;
+}
+
+.journey-copy p {
+  margin: 0;
+  color: $color-text-secondary;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.journey-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+
+  span {
+    padding: 7px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: $color-text-muted;
+  }
+}
+
+.journey-explore {
+  width: 100%;
+  margin-top: 34px;
+  padding: 13px 14px 13px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: $color-text;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+
+  span:first-child {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  &:hover {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: #080a0c;
+
+    .journey-explore-icon {
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+.journey-explore-icon {
+  width: 30px;
+  height: 30px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid currentColor;
+  border-radius: 50%;
+
+  transition: transform 0.3s ease;
+}
+
+.journey-recommendations {
+  padding: 38px 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.09);
+  background: $color-bg;
+}
+
+.recommendation-header {
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  color: $color-text-muted;
+
+  h4 {
+    margin: 7px 0 0;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: $color-text;
+  }
+}
+
+.recommendation-eyebrow {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: $color-accent;
+}
+
+.recommendation-card {
+  width: 100%;
+  min-height: 112px;
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) 32px;
+  gap: 14px;
+  align-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: $color-surface;
+
+  color: $color-text;
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+
+  &:hover {
+    transform: translateX(-4px);
+    border-color: rgba(199, 255, 61, 0.25);
+    background: $color-surface-light;
+  }
+}
+
+.recommendation-image {
+  height: 90px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+  }
+}
+
+.recommendation-card:hover {
+  .recommendation-image img {
+    transform: scale(1.06);
+  }
+}
+
+.recommendation-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  > span {
+    margin-bottom: 4px;
+
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+  }
+
+  strong {
+    overflow: hidden;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.recommendation-meta {
+  margin-top: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 0.7rem;
+  color: $color-text-secondary;
+
+  small {
+    margin-left: 3px;
+    color: $color-text-muted;
+  }
+
+  span:last-child {
+    color: $color-accent;
+  }
+}
+
+.recommendation-arrow {
+  width: 30px;
+  height: 30px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+
+  color: $color-text-muted;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.recommendation-card:hover {
+  .recommendation-arrow {
+    color: $color-accent;
+    border-color: rgba(199, 255, 61, 0.35);
+    transform: translate(2px, -2px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .journey-header {
+    grid-template-columns: 160px minmax(0, 1fr);
+  }
+
+  .journey-content {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-recommendations {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .recommendation-header {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 800px) {
+  .journey-section {
+    padding: 90px 0;
+  }
+
+  .journey-header {
+    display: block;
+  }
+
+  .journey-eyebrow {
+    margin-bottom: 25px;
+  }
+
+  .journey-tabs {
+    display: flex;
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .journey-tab {
+    min-width: 145px;
+    min-height: 78px;
+    padding: 15px;
+  }
+
+  .journey-tab-number {
+    display: none;
+  }
+
+  .journey-tab-line {
+    left: 15px;
+    right: 15px;
+  }
+
+  .journey-main {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-image {
+    min-height: 400px;
+  }
+
+  .journey-copy {
+    min-height: 390px;
+    padding: 32px 26px;
+  }
+
+  .journey-copy h3 {
+    margin-top: 60px;
+  }
+
+  .journey-recommendations {
+    display: flex;
+  }
+}
+
+@media (max-width: 520px) {
+  .journey-section {
+    padding: 75px 0;
+  }
+
+  .journey-heading-wrap {
+    h2 {
+      font-size: 2.65rem;
+    }
+  }
+
+  .journey-image {
+    min-height: 300px;
+  }
+
+  .journey-copy {
+    padding: 26px 20px;
+  }
+
+  .journey-copy h3 {
+    font-size: 2rem;
+    margin-top: 45px;
+  }
+
+  .recommendation-card {
+    grid-template-columns: 78px minmax(0, 1fr) 30px;
+  }
+
+  .recommendation-image {
+    height: 78px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-tab,
+  .journey-explore,
+  .journey-explore-icon,
+  .recommendation-card,
+  .recommendation-arrow,
+  .recommendation-image img {
+    transition: none;
+  }
+}

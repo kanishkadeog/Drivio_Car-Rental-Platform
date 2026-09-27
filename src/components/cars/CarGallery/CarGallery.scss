@@ -1,0 +1,215 @@
+// car-rental-platform/src/components/cars/CarGallery/CarGallery.scss
+
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+
+.car-gallery {
+  &__main {
+    position: relative;
+
+    height: min(62vh, 650px);
+    min-height: 420px;
+
+    overflow: hidden;
+
+    border-radius: $radius-xl;
+
+    background: $color-surface;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.15),
+        transparent 30%,
+        rgba(0, 0, 0, 0.45)
+      );
+  }
+
+  &__counter {
+    position: absolute;
+    left: 24px;
+    bottom: 22px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: $color-text;
+
+    font-family: $font-heading;
+    font-size: 11px;
+
+    i {
+      color: $color-text-muted;
+      font-style: normal;
+    }
+  }
+
+  &__expand {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+
+    display: grid;
+    place-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.35);
+    color: $color-text;
+
+    backdrop-filter: blur(10px);
+
+    cursor: pointer;
+
+    transition:
+      background $transition-fast,
+      border-color $transition-fast;
+
+    &:hover {
+      background: rgba(199, 255, 61, 0.12);
+      border-color: rgba(199, 255, 61, 0.4);
+    }
+  }
+
+  &__arrows {
+    position: absolute;
+    right: 22px;
+    bottom: 18px;
+
+    display: flex;
+    gap: 7px;
+
+    button {
+      display: grid;
+      place-items: center;
+
+      width: 42px;
+      height: 42px;
+
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+
+      background: rgba(0, 0, 0, 0.35);
+      color: $color-text;
+
+      backdrop-filter: blur(10px);
+
+      cursor: pointer;
+
+      transition:
+        background $transition-fast,
+        border-color $transition-fast;
+
+      &:hover {
+        background: $color-accent;
+        border-color: $color-accent;
+        color: #080a0c;
+      }
+    }
+  }
+
+  &__thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+    margin-top: 10px;
+
+    button {
+      height: 86px;
+
+      padding: 0;
+
+      overflow: hidden;
+
+      border: 1px solid $color-border;
+      border-radius: $radius-sm;
+
+      background: $color-surface;
+
+      cursor: pointer;
+
+      opacity: 0.55;
+
+      transition:
+        opacity $transition-fast,
+        border-color $transition-fast;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        transition: transform 0.5s ease;
+      }
+
+      &:hover {
+        opacity: 0.85;
+
+        img {
+          transform: scale(1.04);
+        }
+      }
+
+      &.is-active {
+        opacity: 1;
+        border-color: $color-accent;
+      }
+    }
+  }
+
+  @include mobile {
+    &__main {
+      min-height: 300px;
+      height: 55vw;
+
+      border-radius: $radius-lg;
+    }
+
+    &__thumbs {
+      grid-template-columns: repeat(4, 1fr);
+
+      button {
+        height: 62px;
+      }
+    }
+
+    &__expand {
+      top: 14px;
+      right: 14px;
+
+      width: 36px;
+      height: 36px;
+    }
+
+    &__arrows {
+      right: 14px;
+      bottom: 14px;
+
+      button {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+}

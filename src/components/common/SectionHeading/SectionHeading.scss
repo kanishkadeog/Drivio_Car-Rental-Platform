@@ -1,0 +1,49 @@
+// car-rental-platform/src/components/common/SectionHeading/SectionHeading.scss
+
+@use "../../../styles/variables" as *;
+
+.section-heading {
+  max-width: 760px;
+
+  &--center {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    margin-bottom: $space-sm;
+
+    color: $color-accent;
+
+    font-size: $text-sm;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    color: $color-text;
+
+    font-family: $font-heading;
+    font-size: clamp(2.4rem, 5vw, 4.8rem);
+    font-weight: 600;
+    line-height: 0.98;
+
+    letter-spacing: -0.045em;
+  }
+
+  &__description {
+    max-width: 620px;
+    margin-top: $space-md;
+
+    color: $color-text-muted;
+
+    font-size: $text-lg;
+    line-height: 1.7;
+  }
+
+  &--center &__description {
+    margin-inline: auto;
+  }
+}

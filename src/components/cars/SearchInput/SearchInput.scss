@@ -1,0 +1,119 @@
+// car-rental-platform/src/components/cars/SearchInput/SearchInput.scss
+
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.fleet-search {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  width: min(100%, 620px);
+  min-height: 58px;
+
+  padding: 7px 7px 7px 20px;
+
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: 999px;;
+
+  color: $color-text;
+
+  transition:
+    border-color $transition-fast,
+    box-shadow $transition-fast;
+
+  &:focus-within {
+    border-color: rgba(199, 255, 61, 0.4);
+    box-shadow: 0 0 0 4px rgba(199, 255, 61, 0.06);
+  }
+
+  svg {
+    flex-shrink: 0;
+    color: $color-text-muted;
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+
+    border: 0;
+    outline: 0;
+    background: transparent;
+
+    color: $color-text;
+
+    font-family: $font-body;
+    font-size: 14px;
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+  }
+
+  &__clear {
+    display: grid;
+    place-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+
+    color: $color-text-muted;
+    cursor: pointer;
+
+    transition:
+      color $transition-fast,
+      background $transition-fast;
+
+    &:hover {
+      color: $color-text;
+      background: $color-surface-light;
+    }
+  }
+
+  &__submit {
+    flex-shrink: 0;
+
+    min-height: 44px;
+    padding: 0 22px;
+
+    border: 0;
+    border-radius: 999px;;
+
+    background: $color-accent;
+    color: #080a0c;
+
+    font-family: $font-heading;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+      transform $transition-fast,
+      background $transition-fast;
+
+    &:hover {
+      transform: translateY(-1px);
+      background: $color-accent-dark;
+    }
+  }
+
+  @include mobile {
+    min-height: 54px;
+    padding-left: 16px;
+
+    input {
+      font-size: 13px;
+    }
+
+    &__submit {
+      padding: 0 16px;
+    }
+  }
+}
+

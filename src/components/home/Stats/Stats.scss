@@ -1,0 +1,98 @@
+// car-rental-platform/src/components/home/Stats/Stats.scss
+
+@use "../../../styles/variables" as *;
+
+.stats {
+  padding: 52px 0 80px;
+  border-bottom: 1px solid $color-border;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__item {
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 28px 32px;
+    border-right: 1px solid $color-border;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    strong {
+      display: block;
+      font-family: $font-heading;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    span {
+      display: block;
+      margin-top: 8px;
+      color: $color-text-muted;
+      font-size: 13px;
+    }
+  }
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid $color-border;
+    border-radius: 50%;
+    color: $color-accent;
+  }
+}
+
+@media (max-width: 1024px) {
+  .stats {
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__item {
+      &:nth-child(2) {
+        border-right: none;
+      }
+
+      &:nth-child(-n + 2) {
+        border-bottom: 1px solid $color-border;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .stats {
+    padding: 36px 0 60px;
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__item {
+      min-height: 100px;
+      padding: 22px 18px;
+      border-right: none;
+      border-bottom: 1px solid $color-border;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:nth-child(2) {
+        border-right: none;
+      }
+    }
+  }
+}

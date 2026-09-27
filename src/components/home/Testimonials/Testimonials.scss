@@ -1,0 +1,396 @@
+// car-rental-platform/src/components/home/Testimonials/Testimonials.scss
+
+
+@use "../../../styles/variables" as *;
+
+.testimonials-section {
+  position: relative;
+  padding: 120px 0 110px;
+  background: $color-surface;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -250px;
+    right: -180px;
+
+    width: 550px;
+    height: 550px;
+
+    border-radius: 50%;
+    background: rgba(199, 255, 61, 0.035);
+    filter: blur(100px);
+    pointer-events: none;
+  }
+}
+
+.testimonials-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 55px;
+}
+
+.testimonials-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: $color-text-muted;
+
+  span {
+    width: 24px;
+    height: 1px;
+    background: $color-accent;
+  }
+}
+
+.testimonials-index {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: $color-text-muted;
+}
+
+.testimonials-stage {
+  position: relative;
+
+  min-height: 430px;
+  padding: 75px 9% 70px;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(199, 255, 61, 0.045),
+      transparent 30%
+    ),
+    $color-bg;
+
+  overflow: hidden;
+}
+
+.testimonial-quote-mark {
+  position: absolute;
+  top: 38px;
+  left: 5%;
+
+  color: rgba(199, 255, 61, 0.2);
+}
+
+.testimonial-slide {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.testimonial-copy {
+  max-width: 930px;
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 28px;
+
+  color: $color-accent;
+}
+
+.testimonial-copy blockquote {
+  margin: 0;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.9rem, 3.4vw, 3.65rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  font-weight: 400;
+  color: $color-text;
+}
+
+.testimonial-person {
+  margin-top: 48px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testimonial-avatar {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(199, 255, 61, 0.25);
+  border-radius: 50%;
+
+  background: rgba(199, 255, 61, 0.06);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  color: $color-accent;
+}
+
+.testimonial-person div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.testimonial-person strong {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: $color-text;
+}
+
+.testimonial-person span {
+  font-size: 0.7rem;
+  color: $color-text-muted;
+}
+
+.testimonial-number {
+  flex-shrink: 0;
+
+  span {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(5rem, 10vw, 10rem);
+    line-height: 0.75;
+    letter-spacing: -0.08em;
+    color: rgba(255, 255, 255, 0.035);
+  }
+}
+
+.testimonials-controls {
+  margin-top: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.testimonial-progress {
+  flex: 1;
+
+  display: flex;
+  gap: 18px;
+}
+
+.testimonial-progress-item {
+  min-width: 80px;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  border: 0;
+  background: transparent;
+
+  color: $color-text-muted;
+  cursor: pointer;
+  text-align: left;
+}
+
+.testimonial-progress-number {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.65rem;
+}
+
+.testimonial-progress-track {
+  position: relative;
+
+  width: 100%;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.testimonial-progress-fill {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  background: $color-accent;
+  transform-origin: left center;
+}
+
+.testimonial-progress-item.active {
+  color: $color-text;
+
+  .testimonial-progress-track {
+    background: rgba(199, 255, 61, 0.25);
+  }
+}
+
+.testimonial-arrows {
+  display: flex;
+  gap: 8px;
+
+  button {
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+
+    background: transparent;
+    color: $color-text;
+
+    cursor: pointer;
+
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s ease;
+
+    &:hover {
+      background: $color-accent;
+      border-color: $color-accent;
+      color: $color-bg;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.testimonials-footer {
+  margin-top: 55px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+
+  strong {
+    color: $color-text;
+  }
+}
+
+.testimonials-footer-line {
+  width: 70px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 800px) {
+  .testimonials-section {
+    padding: 90px 0;
+  }
+
+  .testimonials-stage {
+    min-height: 500px;
+    padding: 65px 28px 50px;
+  }
+
+  .testimonial-slide {
+    display: block;
+  }
+
+  .testimonial-copy blockquote {
+    font-size: 2rem;
+    line-height: 1.12;
+  }
+
+  .testimonial-person {
+    margin-top: 38px;
+  }
+
+  .testimonial-number {
+    position: absolute;
+    right: 25px;
+    bottom: 20px;
+
+    span {
+      font-size: 6rem;
+    }
+  }
+
+  .testimonials-controls {
+    align-items: flex-end;
+  }
+
+  .testimonial-progress {
+    gap: 10px;
+  }
+
+  .testimonial-progress-item {
+    min-width: 40px;
+  }
+
+  .testimonial-progress-number {
+    font-size: 0.58rem;
+  }
+
+  .testimonials-footer {
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .testimonials-section {
+    padding: 75px 0;
+  }
+
+  .testimonials-top {
+    margin-bottom: 35px;
+  }
+
+  .testimonials-stage {
+    min-height: 510px;
+    padding: 65px 20px 45px;
+  }
+
+  .testimonial-copy blockquote {
+    font-size: 1.75rem;
+  }
+
+  .testimonial-rating {
+    margin-bottom: 22px;
+  }
+
+  .testimonial-arrows button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testimonials-footer-line {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-progress-fill {
+    animation: none;
+    transition: none;
+  }
+
+  .testimonial-arrows button {
+    transition: none;
+  }
+}

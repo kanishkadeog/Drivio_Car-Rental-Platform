@@ -1,0 +1,178 @@
+// car-rental-plaatform/src/components/booking/BookingProgress/BookingProgress.scss
+
+
+@use "../../../styles/variables" as *;
+// @use "../../../styles/mixins" as *;
+
+
+.booking-progress {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 42px;
+
+  &__step-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  &__circle {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid $color-border;
+    border-radius: 50%;
+
+    background: $color-surface;
+    color: $color-text-muted;
+
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__number {
+    font-family: $font-body;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: $color-text-muted;
+  }
+
+  &__label {
+    font-family: $font-heading;
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-text-muted;
+    white-space: nowrap;
+  }
+
+  &__line {
+    flex: 1;
+    height: 1px;
+    margin: 0 18px;
+
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  &__line-fill {
+    height: 100%;
+    background: $color-accent;
+  }
+
+  // Active
+  &__step--active {
+    .booking-progress__circle {
+      background: $color-accent;
+      border-color: $color-accent;
+      color: $color-bg;
+
+      box-shadow:
+        0 0 0 5px rgba(199, 255, 61, 0.08),
+        0 0 28px rgba(199, 255, 61, 0.12);
+    }
+
+    .booking-progress__number,
+    .booking-progress__label {
+      color: $color-text;
+    }
+  }
+
+  // Completed
+  &__step--completed {
+    .booking-progress__circle {
+      background: rgba(199, 255, 61, 0.12);
+      border-color: $color-accent;
+      color: $color-accent;
+    }
+
+    .booking-progress__number,
+    .booking-progress__label {
+      color: $color-text-secondary;
+    }
+  }
+}
+
+
+// ============================================
+// TABLET
+// ============================================
+
+@media (max-width: 900px) {
+  .booking-progress {
+    &__label {
+      font-size: 12px;
+    }
+
+    &__line {
+      margin: 0 10px;
+    }
+  }
+}
+
+
+// ============================================
+// MOBILE
+// ============================================
+
+@media (max-width: 650px) {
+  .booking-progress {
+    align-items: flex-start;
+    margin-bottom: 30px;
+
+    &__step-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__step {
+      flex-direction: column;
+      gap: 7px;
+      text-align: center;
+    }
+
+    &__circle {
+      width: 38px;
+      height: 38px;
+    }
+
+    &__text {
+      align-items: center;
+    }
+
+    &__number {
+      display: none;
+    }
+
+    &__label {
+      font-size: 10px;
+    }
+
+    &__line {
+      width: 100%;
+      margin: 19px 7px 0;
+    }
+  }
+}

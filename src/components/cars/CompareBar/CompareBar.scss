@@ -1,0 +1,199 @@
+// car-rental-platform/src/components/cars/CompareBar/CompareBar.scss
+
+
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+
+.compare-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+
+  z-index: 80;
+
+  pointer-events: none;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    width: min(
+      calc(100% - 32px),
+      1100px
+    );
+
+    min-height: 76px;
+
+    margin: auto;
+    padding: 10px 12px 10px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: $radius-xl;
+
+    background: rgba(17, 20, 24, 0.94);
+
+    box-shadow: $shadow-lg;
+
+    backdrop-filter: blur(20px);
+
+    pointer-events: auto;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: $color-accent;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      strong {
+        color: $color-text;
+
+        font-family: $font-heading;
+        font-size: 11px;
+      }
+
+      span {
+        color: $color-text-muted;
+        font-size: 9px;
+      }
+    }
+  }
+
+  &__cars {
+    display: flex;
+    flex: 1;
+    gap: 8px;
+  }
+
+  &__car {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 5px 9px 5px 5px;
+
+    border: 1px solid $color-border;
+    border-radius: 999px;
+
+    background: $color-bg;
+
+    img {
+      width: 34px;
+      height: 28px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+    }
+
+    span {
+      max-width: 105px;
+
+      overflow: hidden;
+
+      color: $color-text-secondary;
+
+      font-size: 9px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__clear,
+  &__compare {
+    min-height: 40px;
+
+    padding: 0 15px;
+
+    border-radius: 999px;
+
+    font-family: $font-heading;
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+  }
+
+  &__clear {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    border: 1px solid $color-border;
+
+    background: transparent;
+    color: $color-text-secondary;
+  }
+
+  &__compare {
+    border: 0;
+
+    background: $color-accent;
+    color: #080a0c;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@include mobile {
+  .compare-bar {
+    bottom: 10px;
+
+    &__inner {
+      width: calc(100% - 20px);
+
+      padding: 10px;
+
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    &__title {
+      width: 100%;
+    }
+
+    &__cars {
+      width: 100%;
+    }
+
+    &__car {
+      flex: 1;
+
+      span {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+        height: 35px;
+        border-radius: 6px;
+      }
+    }
+
+    &__actions {
+      width: 100%;
+
+      > * {
+        flex: 1;
+      }
+    }
+  }
+}
